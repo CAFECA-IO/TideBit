@@ -1,0 +1,388 @@
+// TideBit 結束營運版：直接使用舊系統（Peatio）轉成 PostgreSQL 的資料庫。
+//
+// ⚠️ 本 schema 只「對應」既有資料表，不是用來產生資料表的：
+//    - 不要執行 prisma migrate / prisma db push（專案也沒有提供這些指令）
+//    - 程式只會讀寫既有資料表的資料列，不會建立或修改任何資料表、欄位
+//    - 舊資料庫沒有外鍵，relationMode = "prisma" 讓關聯只存在於程式端
+//
+// 只列出新系統用到的資料表與欄位；其餘舊表維持原狀。
+
+generator client {
+  provider = "prisma-client"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider     = "postgresql"
+  relationMode = "prisma"
+}
+
+// ───────────────────────────── 會員 ─────────────────────────────
+
+model Member {
+  id              BigInt    @id @default(autoincrement())
+  sn              String?   @db.VarChar(255)
+  email           String?   @db.VarChar(255)
+  identityId      BigInt?   @map("identity_id")
+  createdAt       DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt       DateTime? @map("updated_at") @db.Timestamp(6)
+  countryCode     BigInt?   @map("country_code")
+  phoneNumber     String?   @map("phone_number") @db.VarChar(255)
+  disabled        Int?      @default(0) @db.SmallInt
+  nickname        String?   @db.VarChar(255)
+  name            String?   @db.VarChar(255)
+  country         String?   @db.VarChar(255)
+  disableWithdraw Int?      @default(0) @map("disable_withdraw") @db.SmallInt
+
+  identity        Identity?        @relation(fields: [identityId], references: [id])
+  accounts        Account[]
+  withdraws       Withdraw[]
+  idDocuments     IdDocument[]
+  authentications Authentication[]
+  topics          TicketTopic[]
+
+  @@index([identityId])
+  @@map("members")
+}
+
+/// 登入帳密（Rails has_secure_password，bcrypt）
+model Identity {
+  id             BigInt    @id @default(autoincrement())
+  email          String?   @db.VarChar(255)
+  passwordDigest String?   @map("password_digest") @db.VarChar(255)
+  isActive       Int?      @map("is_active") @db.SmallInt
+  retryCount     BigInt?   @map("retry_count")
+  isLocked       Int?      @map("is_locked") @db.SmallInt
+  lockedAt       DateTime? @map("locked_at") @db.Timestamp(6)
+  lastVerifyAt   DateTime? @map("last_verify_at") @db.Timestamp(6)
+  createdAt      DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt      DateTime? @map("updated_at") @db.Timestamp(6)
+
+  members Member[]
+
+  @@map("identities")
+}
+
+/// 舊系統 KYC 證件（已審核者的姓名用於與 CAFECA 比對）
+model IdDocument {
+  id         BigInt    @id @default(autoincrement())
+  name       String?   @db.VarChar(255)
+  memberId   BigInt?   @map("member_id")
+  country    String?   @db.VarChar(255)
+  aasmState  String?   @map("aasm_state") @db.VarChar(255)
+  verifiedAt DateTime? @map("verified_at") @db.Timestamp(6)
+  createdAt  DateTime? @map("created_at") @db.Timestamp(6)
+
+  member Member? @relation(fields: [memberId], references: [id])
+
+  @@index([memberId])
+  @@map("id_documents")
+}
+
+/// 第三方身分綁定；CAFECA 綁定存為 provider = "cafeca"
+///   uid = 身分合約地址、nickname = 證件姓名、token = pairwise_id、secret = 審核狀態 JSON
+model Authentication {
+  id        BigInt    @id @default(autoincrement())
+  provider  String?   @db.VarChar(255)
+  uid       String?   @db.VarChar(255)
+  token     String?   @db.VarChar(255)
+  secret    String?   @db.VarChar(255)
+  memberId  BigInt?   @map("member_id")
+  createdAt DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt DateTime? @map("updated_at") @db.Timestamp(6)
+  nickname  String?   @db.VarChar(255)
+
+  member Member? @relation(fields: [memberId], references: [id])
+
+  @@index([memberId])
+  @@index([provider, uid])
+  @@map("authentications")
+}
+
+// ───────────────────────────── 資產與帳本 ─────────────────────────────
+
+/// 幣種基本資料（id 對應 accounts.currency 等欄位）
+model AssetBase {
+  id            BigInt   @id @default(autoincrement())
+  key           String?  @unique @db.VarChar(255)
+  reference     String?  @db.VarChar(255)
+  name          String?  @db.VarChar(255)
+  symbol        String?  @db.VarChar(255)
+  precision     BigInt?
+  viewPrecision BigInt?  @map("view_precision")
+  isBlockchain  Int?     @map("is_blockchain") @db.SmallInt
+  isFiat        Int?     @map("is_fiat") @db.SmallInt
+  explorerUrl   String?  @map("explorer_url") @db.VarChar(255)
+
+  @@map("asset_bases")
+}
+
+model AssetToken {
+  id              BigInt  @id @default(autoincrement())
+  assetKey        String? @map("asset_key") @db.VarChar(255)
+  contractAddress String? @map("contract_address") @db.VarChar(255)
+  tokenType       String? @default("eth") @map("token_type") @db.VarChar(255)
+
+  @@map("asset_tokens")
+}
+
+model Account {
+  id        BigInt    @id @default(autoincrement())
+  memberId  BigInt?   @map("member_id")
+  currency  BigInt?
+  balance   Decimal?  @db.Decimal(32, 16)
+  locked    Decimal?  @db.Decimal(32, 16)
+  createdAt DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt DateTime? @map("updated_at") @db.Timestamp(6)
+
+  member Member? @relation(fields: [memberId], references: [id])
+
+  @@index([memberId, currency])
+  @@map("accounts")
+}
+
+/// 帳本：balance / locked 為變動量，amount 為變動後總額；reason 沿用舊 REASON_CODES
+model AccountVersion {
+  id             BigInt    @id @default(autoincrement())
+  memberId       BigInt?   @map("member_id")
+  accountId      BigInt?   @map("account_id")
+  reason         BigInt?
+  balance        Decimal?  @db.Decimal(32, 16)
+  locked         Decimal?  @db.Decimal(32, 16)
+  fee            Decimal?  @db.Decimal(32, 16)
+  amount         Decimal?  @db.Decimal(32, 16)
+  modifiableId   BigInt?   @map("modifiable_id")
+  modifiableType String?   @map("modifiable_type") @db.VarChar(255)
+  createdAt      DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt      DateTime? @map("updated_at") @db.Timestamp(6)
+  currency       BigInt?
+  fun            BigInt?
+
+  @@index([accountId])
+  @@index([memberId, reason])
+  @@map("account_versions")
+}
+
+model Deposit {
+  id            BigInt    @id @default(autoincrement())
+  memberId      BigInt?   @map("member_id")
+  currency      BigInt?
+  amount        Decimal?  @db.Decimal(32, 16)
+  fee           Decimal?  @db.Decimal(32, 16)
+  fundUid       String?   @map("fund_uid") @db.VarChar(255)
+  txid          String?   @db.VarChar(255)
+  aasmState     String?   @map("aasm_state") @db.VarChar(255)
+  createdAt     DateTime? @map("created_at") @db.Timestamp(6)
+  doneAt        DateTime? @map("done_at") @db.Timestamp(6)
+  type          String?   @db.VarChar(255)
+
+  @@index([memberId])
+  @@map("deposits")
+}
+
+/// 提領（舊紀錄與新申請共用；aasm_state 沿用舊狀態名稱）
+model Withdraw {
+  id             BigInt    @id @default(autoincrement())
+  memberId       BigInt?   @map("member_id")
+  sn             String?   @db.VarChar(255)
+  amount         Decimal?  @db.Decimal(32, 16) // 實際到帳
+  accountId      BigInt?   @map("account_id")
+  fee            Decimal?  @db.Decimal(32, 16)
+  feeAccountId   BigInt?   @map("fee_account_id") // 舊系統「指定手續費資產」時與 account_id 不同
+  fundUid        String?   @map("fund_uid") @db.VarChar(255) // 收款地址
+  fundExtra      String?   @map("fund_extra") @db.VarChar(255) // 地址標籤
+  createdAt      DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt      DateTime? @map("updated_at") @db.Timestamp(6)
+  doneAt         DateTime? @map("done_at") @db.Timestamp(6)
+  txid           String?   @db.VarChar(255)
+  aasmState      String?   @map("aasm_state") @db.VarChar(255)
+  sum            Decimal   @default(0) @db.Decimal(32, 16) // 扣款總額 = amount + fee
+  type           String?   @db.VarChar(255)
+  memo           String?   @db.VarChar(255)
+  currency       BigInt?
+  destinationTag BigInt?   @map("destination_tag")
+
+  member Member? @relation(fields: [memberId], references: [id])
+
+  @@index([aasmState])
+  @@index([memberId])
+  @@map("withdraws")
+}
+
+/// 提領地址簿
+model FundSource {
+  id             BigInt    @id @default(autoincrement())
+  memberId       BigInt?   @map("member_id")
+  currency       BigInt?
+  extra          String?   @db.VarChar(255) // 標籤
+  uid            String?   @db.VarChar(255) // 地址
+  createdAt      DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt      DateTime? @map("updated_at") @db.Timestamp(6)
+  deletedAt      DateTime? @map("deleted_at") @db.Timestamp(6)
+  destinationTag BigInt?   @map("destination_tag")
+
+  @@index([deletedAt, memberId, currency])
+  @@map("fund_sources")
+}
+
+// ───────────────────────────── 交易紀錄（唯讀） ─────────────────────────────
+
+model Order {
+  id            BigInt    @id @default(autoincrement())
+  bid           BigInt?
+  ask           BigInt?
+  currency      BigInt? // 市場代碼（markets.yml 的 code）
+  price         Decimal?  @db.Decimal(32, 16)
+  volume        Decimal?  @db.Decimal(32, 16)
+  originVolume  Decimal?  @map("origin_volume") @db.Decimal(32, 16)
+  state         BigInt? // 100 wait / 200 done / 0 cancel
+  doneAt        DateTime? @map("done_at") @db.Timestamp(6)
+  type          String?   @db.VarChar(8) // OrderBid / OrderAsk
+  memberId      BigInt?   @map("member_id")
+  createdAt     DateTime? @map("created_at") @db.Timestamp(6)
+  ordType       String?   @map("ord_type") @db.VarChar(10)
+  fundsReceived Decimal?  @default(0) @map("funds_received") @db.Decimal(32, 16)
+
+  @@index([memberId])
+  @@map("orders")
+}
+
+model Trade {
+  id          BigInt    @id @default(autoincrement())
+  price       Decimal?  @db.Decimal(32, 16)
+  volume      Decimal?  @db.Decimal(32, 16)
+  askId       BigInt?   @map("ask_id")
+  bidId       BigInt?   @map("bid_id")
+  currency    BigInt?
+  createdAt   DateTime? @map("created_at") @db.Timestamp(6)
+  askMemberId BigInt?   @map("ask_member_id")
+  bidMemberId BigInt?   @map("bid_member_id")
+  funds       Decimal?  @db.Decimal(32, 16)
+
+  @@index([askMemberId])
+  @@index([bidMemberId])
+  @@map("trades")
+}
+
+// ───────────────────────────── 客服 ─────────────────────────────
+
+/// 客服單：content 第一行為主旨；state 為 open / replied / closed
+model TicketTopic {
+  id           BigInt    @id @default(autoincrement())
+  authorId     BigInt?   @map("author_id")
+  categoryId   BigInt?   @map("category_id")
+  content      String?
+  state        String?   @db.VarChar(255)
+  lastReplyAt  DateTime? @map("last_reply_at") @db.Timestamp(6)
+  lastViewAt   DateTime? @map("last_view_at") @db.Timestamp(6)
+  createdAt    DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt    DateTime? @map("updated_at") @db.Timestamp(6)
+
+  author   Member?         @relation(fields: [authorId], references: [id])
+  comments TicketComment[]
+
+  @@index([authorId])
+  @@index([state])
+  @@map("ticket_topics")
+}
+
+model TicketComment {
+  id        BigInt    @id @default(autoincrement())
+  topicId   BigInt?   @map("topic_id")
+  authorId  BigInt?   @map("author_id")
+  content   String?
+  createdAt DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt DateTime? @map("updated_at") @db.Timestamp(6)
+
+  topic TicketTopic? @relation(fields: [topicId], references: [id])
+
+  @@index([topicId])
+  @@map("ticket_comments")
+}
+
+// ───────────────────────────── 管理與稽核 ─────────────────────────────
+
+/// 管理員備註（會員、提領）：resource_type = Member / Withdraw
+model AdminComment {
+  id           BigInt    @id @default(autoincrement())
+  namespace    String?   @db.VarChar(255)
+  body         String?
+  resourceId   String    @map("resource_id") @db.VarChar(255)
+  resourceType String    @map("resource_type") @db.VarChar(255)
+  authorId     BigInt?   @map("author_id")
+  authorType   String?   @map("author_type") @db.VarChar(255)
+  createdAt    DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt    DateTime? @map("updated_at") @db.Timestamp(6)
+
+  @@index([resourceType, resourceId])
+  @@map("active_admin_comments")
+}
+
+/// 狀態變更紀錄（沿用舊系統：提領審核 type = Audit::TransferAuditLog）
+model AuditLog {
+  id            BigInt    @id @default(autoincrement())
+  type          String?   @db.VarChar(255)
+  operatorId    BigInt?   @map("operator_id")
+  createdAt     DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt     DateTime? @map("updated_at") @db.Timestamp(6)
+  auditableId   BigInt?   @map("auditable_id")
+  auditableType String?   @map("auditable_type") @db.VarChar(255)
+  sourceState   String?   @map("source_state") @db.VarChar(255)
+  targetState   String?   @map("target_state") @db.VarChar(255)
+
+  @@index([auditableId, auditableType])
+  @@map("audit_logs")
+}
+
+/// 操作紀錄（paper_trail 表）：新系統的登入、審核、設定變更寫在 item_type = "TideBit"
+model Version {
+  id        BigInt    @id @default(autoincrement())
+  itemType  String    @map("item_type") @db.VarChar(255)
+  itemId    BigInt    @map("item_id")
+  event     String    @db.VarChar(255)
+  whodunnit String?   @db.VarChar(255)
+  object    String?
+  createdAt DateTime? @map("created_at") @db.Timestamp(6)
+
+  @@index([itemType, itemId])
+  @@map("versions")
+}
+
+/// 系統設定：新系統使用 key_1 = "tidebit"
+model SystemConfig {
+  id          BigInt    @id @default(autoincrement())
+  key1        String    @default("") @map("key_1") @db.VarChar(32)
+  key2        String    @default("") @map("key_2") @db.VarChar(32)
+  key3        String    @default("") @map("key_3") @db.VarChar(32)
+  key4        String    @default("") @map("key_4") @db.VarChar(32)
+  key5        String    @default("") @map("key_5") @db.VarChar(32)
+  key6        String    @default("") @map("key_6") @db.VarChar(32)
+  description String?   @db.VarChar(255)
+  isReadonly  Int?      @map("is_readonly") @db.SmallInt
+  isVisible   Int?      @map("is_visible") @db.SmallInt
+  dataType    String    @map("data_type") @db.VarChar(255)
+  inputType   String    @map("input_type") @db.VarChar(255)
+  value       String?
+  createdAt   DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt   DateTime? @map("updated_at") @db.Timestamp(6)
+
+  @@unique([key1, key2, key3, key4, key5, key6])
+  @@map("system_configs")
+}
+
+/// 公告（lang 為語系，platform = "tidebit-v2"）
+model Announcement {
+  id          BigInt    @id @default(autoincrement())
+  createdById BigInt?   @map("created_by_id")
+  text        String    @db.VarChar(255)
+  link        String    @db.VarChar(255)
+  isActive    Int       @default(1) @map("is_active") @db.SmallInt
+  start       DateTime? @db.Timestamp(6)
+  end         DateTime? @db.Timestamp(6)
+  lang        String    @db.VarChar(255)
+  platform    String    @db.VarChar(255)
+  createdAt   DateTime? @map("created_at") @db.Timestamp(6)
+  updatedAt   DateTime? @map("updated_at") @db.Timestamp(6)
+
+  @@map("announcements")
+}

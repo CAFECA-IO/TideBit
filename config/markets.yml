@@ -1,0 +1,1406 @@
+#
+# Copyright (C) 2017 YUNBI Technology Co., Ltd - All Rights Reserved
+# Written by Peatio open-source group hi@peatio.com, May 2017
+#
+- id: btcusd
+  code: 1
+  name: BTC/USD
+  base_unit: btc
+  quote_unit: usd
+  bid: {fee: 0.0005, currency: usd, fixed: 2}
+  ask: {fee: 0.0005, currency: btc, fixed: 3}
+  sort_order: 11
+  tab_category: usd
+  primary: true
+  visible: true
+
+- id: ethusd
+  code: 2
+  name: ETH/USD
+  base_unit: eth
+  quote_unit: usd
+  bid: {fee: 0.001, currency: usd, fixed: 2}
+  ask: {fee: 0.001, currency: eth, fixed: 3}
+  sort_order: 12
+  tab_category: usd
+  primary: true
+  visible: true
+
+- id: scusd
+  code: 3
+  name: SC/USD
+  base_unit: sc
+  quote_unit: usd
+  bid: {fee: 0.001, currency: usd, fixed: 5}
+  ask: {fee: 0.001, currency: sc, fixed: 0}
+  sort_order: 13
+  tab_category: usd
+  primary: true
+  visible: false
+
+- id: dgdusd
+  code: 4
+  name: DGD/USD
+  base_unit: dgd
+  quote_unit: usd
+  bid: {fee: 0.001, currency: usd, fixed: 2}
+  ask: {fee: 0.001, currency: dgd, fixed: 4}
+  sort_order: 14
+  tab_category: usd
+  primary: true
+  visible: false
+
+- id: etcusd
+  code: 5
+  name: ETC/USD
+  base_unit: etc
+  quote_unit: usd
+  bid: {fee: 0.001, currency: usd, fixed: 2}
+  ask: {fee: 0.001, currency: etc, fixed: 4}
+  sort_order: 15
+  tab_category: usd
+  primary: true
+  visible: false
+
+- id: zecusd
+  code: 6
+  name: ZEC/USD
+  base_unit: zec
+  quote_unit: usd
+  bid: {fee: 0.001, currency: usd, fixed: 2}
+  ask: {fee: 0.001, currency: zec, fixed: 3}
+  sort_order: 16
+  tab_category: usd
+  primary: true
+  visible: false
+
+- id: btchkd
+  code: 7
+  name: BTC/HKD
+  base_unit: btc
+  quote_unit: hkd
+  bid: {fee: 0.0005, currency: hkd, fixed: 2}
+  ask: {fee: 0.0005, currency: btc, fixed: 3}
+  sort_order: 1
+  tab_category: hkd
+  primary: true
+
+- id: ethhkd
+  code: 8
+  name: ETH/HKD
+  base_unit: eth
+  quote_unit: hkd
+  bid: {fee: 0.001, currency: hkd, fixed: 2}
+  ask: {fee: 0.001, currency: eth, fixed: 3}
+  sort_order: 2
+  tab_category: hkd
+  primary: true
+
+- id: schkd
+  code: 9
+  name: SC/HKD
+  base_unit: sc
+  quote_unit: hkd
+  bid: {fee: 0.001, currency: hkd, fixed: 5}
+  ask: {fee: 0.001, currency: sc, fixed: 0}
+  sort_order: 3
+  tab_category: hkd
+  primary: true
+  visible: false
+
+- id: dgdhkd
+  code: 10
+  name: DGD/HKD
+  base_unit: dgd
+  quote_unit: hkd
+  bid: {fee: 0.001, currency: hkd, fixed: 2}
+  ask: {fee: 0.001, currency: dgd, fixed: 4}
+  sort_order: 4
+  tab_category: hkd
+  primary: true
+  visible: false
+
+- id: etchkd
+  code: 11
+  name: ETC/HKD
+  base_unit: etc
+  quote_unit: hkd
+  bid: {fee: 0.001, currency: hkd, fixed: 2}
+  ask: {fee: 0.001, currency: etc, fixed: 4}
+  sort_order: 5
+  tab_category: hkd
+  primary: true
+  visible: false
+
+- id: zechkd
+  code: 12
+  name: ZEC/HKD
+  base_unit: zec
+  quote_unit: hkd
+  bid: {fee: 0.001, currency: hkd, fixed: 2}
+  ask: {fee: 0.001, currency: zec, fixed: 3}
+  sort_order: 6
+  tab_category: hkd
+  primary: true
+  visible: false
+
+- id: ethbtc
+  code: 13
+  name: ETH/BTC
+  base_unit: eth
+  quote_unit: btc
+  bid: {fee: 0.001, currency: btc, fixed: 4}
+  ask: {fee: 0.001, currency: eth, fixed: 4}
+  sort_order: 27
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: scbtc
+  code: 14
+  name: SC/BTC
+  base_unit: sc
+  quote_unit: btc
+  bid: {fee: 0.001, currency: btc, fixed: 4}
+  ask: {fee: 0.001, currency: sc, fixed: 0}
+  sort_order: 28
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: dgdbtc
+  code: 15
+  name: DGD/BTC
+  base_unit: dgd
+  quote_unit: btc
+  bid: {fee: 0.001, currency: btc, fixed: 4}
+  ask: {fee: 0.001, currency: dgd, fixed: 4}
+  sort_order: 29
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: etcbtc
+  code: 16
+  name: ETC/BTC
+  base_unit: etc
+  quote_unit: btc
+  bid: {fee: 0.001, currency: btc, fixed: 4}
+  ask: {fee: 0.001, currency: etc, fixed: 4}
+  sort_order: 30
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: zecbtc
+  code: 17
+  name: ZEC/BTC
+  base_unit: zec
+  quote_unit: btc
+  bid: {fee: 0.001, currency: btc, fixed: 4}
+  ask: {fee: 0.001, currency: zec, fixed: 3}
+  sort_order: 31
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: xpaeth
+  code: 18
+  name: XPA/ETH
+  base_unit: xpa
+  quote_unit: eth
+  bid: {fee: 0.003, currency: eth, fixed: 8}
+  ask: {fee: 0.003, currency: xpa, fixed: 4}
+  sort_order: 38
+  tab_category: alts
+  price_group_fixed: 8
+  primary: true
+
+- id: bt1btc
+  code: 19
+  name: BT1/BTC
+  base_unit: bt1
+  quote_unit: btc
+  bid: {fee: 0.001, currency: btc, fixed: 4}
+  ask: {fee: 0.001, currency: bt1, fixed: 3}
+  sort_order: 32
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: bt2btc
+  code: 20
+  name: BT2/BTC
+  base_unit: bt2
+  quote_unit: btc
+  bid: {fee: 0.001, currency: btc, fixed: 4}
+  ask: {fee: 0.001, currency: bt2, fixed: 3}
+  sort_order: 33
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: bchtwd
+  code: 21
+  name: BCH/TWD
+  base_unit: bch
+  quote_unit: twd
+  bid: {fee: 0.003, currency: twd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: bch, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 99
+  tab_category: twd
+  primary: true
+  visible: false
+
+- id: ltctwd
+  code: 22
+  name: LTC/TWD
+  base_unit: ltc
+  quote_unit: twd
+  bid: {fee: 0.003, currency: twd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: ltc, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 99
+  tab_category: twd
+  primary: true
+  visible: false
+
+- id: dashbtc
+  code: 23
+  name: DASH/BTC
+  base_unit: dash
+  quote_unit: btc
+  bid: {fee: 0.003, currency: btc, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: dash, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 34
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: bchbtc
+  code: 24
+  name: BCH/BTC
+  base_unit: BCH
+  quote_unit: btc
+  bid: {fee: 0.003, currency: btc, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: bch, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 35
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: bchhkd
+  code: 25
+  name: BCH/HKD
+  base_unit: bch
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: bch, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 7
+  tab_category: hkd
+  primary: true
+  visible: false
+
+- id: ltcbtc
+  code: 26
+  name: LTC/BTC
+  base_unit: ltc
+  quote_unit: btc
+  bid: {fee: 0.003, currency: btc, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: ltc, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 36
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: ltchkd
+  code: 27
+  name: LTC/HKD
+  base_unit: ltc
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: ltc, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 8
+  tab_category: hkd
+  primary: true
+  visible: false
+
+- id: neohkd
+  code: 28
+  name: NEO/HKD
+  base_unit: neo
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: neo, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 9
+  tab_category: hkd
+  primary: true
+  visible: true
+
+- id: qlcneo
+  code: 29
+  name: QLC/NEO
+  base_unit: qlc
+  quote_unit: neo
+  bid: {fee: 0.003, currency: neo, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: qlc, fixed: 6, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 41
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: neobtc
+  code: 30
+  name: NEO/BTC
+  base_unit: neo
+  quote_unit: btc
+  bid: {fee: 0.003, currency: btc, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: neo, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 37
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: qlceth
+  code: 31
+  name: QLC/ETH
+  base_unit: qlc
+  quote_unit: eth
+  bid: {fee: 0.003, currency: eth, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: qlc, fixed: 6, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 39
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: cbteth
+  code: 32
+  name: CBT/ETH
+  base_unit: cbt
+  quote_unit: eth
+  bid: {fee: 0.003, currency: eth, fixed: 8}
+  ask: {fee: 0.003, currency: cbt, fixed: 4}
+  sort_order: 40
+  tab_category: alts
+  price_group_fixed: 8
+  primary: true
+  visible: true
+
+- id: cbtxpa
+  code: 33
+  name: CBT/XPA
+  base_unit: cbt
+  quote_unit: xpa
+  bid: {fee: 0.003, currency: xpa, fixed: 4}
+  ask: {fee: 0.003, currency: cbt, fixed: 4}
+  sort_order: 42
+  tab_category: alts
+  price_group_fixed: 4
+  primary: true
+  visible: true
+
+# -------
+
+- id: hkxhkd
+  code: 34
+  name: HKX/HKD
+  base_unit: hkx
+  quote_unit: hkd
+  bid: {fee: 0.002, currency: hkd, fixed: 2}
+  ask: {fee: 0.002, currency: hkx, fixed: 2}
+  sort_order: 10
+  tab_category: hkd
+  price_group_fixed: 2
+  primary: true
+  visible: true
+
+- id: usxusd
+  code: 35
+  name: USX/USD
+  base_unit: usx
+  quote_unit: usd
+  bid: {fee: 0.002, currency: usd, fixed: 2}
+  ask: {fee: 0.002, currency: usx, fixed: 2}
+  sort_order: 17
+  tab_category: usd
+  price_group_fixed: 2
+  primary: true
+  visible: true
+
+- id: usxhkx
+  code: 36
+  name: USX/HKX
+  base_unit: usx
+  quote_unit: hkx
+  bid: {fee: 0.001, currency: hkx, fixed: 2}
+  ask: {fee: 0.001, currency: usx, fixed: 2}
+  sort_order: 18
+  tab_category: alts
+  price_group_fixed: 2
+  primary: true
+  visible: true
+
+# -------
+
+- id: btchkx
+  code: 37
+  name: BTC/HKX
+  base_unit: btc
+  quote_unit: hkx
+  bid: {fee: 0.001, currency: hkx, fixed: 2}
+  ask: {fee: 0.001, currency: btc, fixed: 4}
+  sort_order: 19
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: ethhkx
+  code: 38
+  name: ETH/HKX
+  base_unit: eth
+  quote_unit: hkx
+  bid: {fee: 0.001, currency: hkx, fixed: 2}
+  ask: {fee: 0.001, currency: eth, fixed: 4}
+  sort_order: 20
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: xpahkx
+  code: 39
+  name: XPA/HKX
+  base_unit: xpa
+  quote_unit: hkx
+  bid: {fee: 0.001, currency: hkx, fixed: 2}
+  ask: {fee: 0.001, currency: xpa, fixed: 4}
+  sort_order: 21
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: cbthkx
+  code: 40
+  name: CBT/HKX
+  base_unit: cbt
+  quote_unit: hkx
+  bid: {fee: 0.001, currency: hkx, fixed: 2}
+  ask: {fee: 0.001, currency: cbt, fixed: 4}
+  sort_order: 22
+  tab_category: alts
+  primary: true
+  visible: true
+
+# -------
+
+- id: btcusx
+  code: 41
+  name: BTC/USX
+  base_unit: btc
+  quote_unit: usx
+  bid: {fee: 0.001, currency: usx, fixed: 2}
+  ask: {fee: 0.001, currency: btc, fixed: 4}
+  sort_order: 23
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: ethusx
+  code: 42
+  name: ETH/USX
+  base_unit: eth
+  quote_unit: usx
+  bid: {fee: 0.001, currency: usx, fixed: 2}
+  ask: {fee: 0.001, currency: eth, fixed: 4}
+  sort_order: 24
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: xpausx
+  code: 43
+  name: XPA/USX
+  base_unit: xpa
+  quote_unit: usx
+  bid: {fee: 0.001, currency: usx, fixed: 2}
+  ask: {fee: 0.001, currency: xpa, fixed: 4}
+  sort_order: 25
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: cbtusx
+  code: 44
+  name: CBT/USX
+  base_unit: cbt
+  quote_unit: usx
+  bid: {fee: 0.001, currency: usx, fixed: 2}
+  ask: {fee: 0.001, currency: cbt, fixed: 4}
+  sort_order: 26
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: eoshkd
+  code: 45
+  name: EOS/HKD
+  base_unit: eos
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2}
+  ask: {fee: 0.003, currency: eos, fixed: 4}
+  sort_order: 10
+  tab_category: hkd
+  primary: true
+  visible: true
+
+- id: eoshkx
+  code: 46
+  name: EOS/HKX
+  base_unit: eos
+  quote_unit: hkx
+  bid: {fee: 0.001, currency: hkx, fixed: 2}
+  ask: {fee: 0.001, currency: eos, fixed: 4}
+  sort_order: 22
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: likehkx
+  code: 47
+  name: LIKE/HKX
+  base_unit: like
+  quote_unit: hkx
+  bid: {fee: 0.001, currency: hkx, fixed: 2}
+  ask: {fee: 0.001, currency: like, fixed: 4}
+  sort_order: 22
+  tab_category: alts
+  primary: true
+  visible: true
+
+# - id: xtphkx
+#   code: 48
+#   name: XTP/HKX
+#   base_unit: xtp
+#   quote_unit: hkx
+#   bid: {fee: 0.001, currency: hkx, fixed: 2}
+#   ask: {fee: 0.001, currency: xtp, fixed: 4}
+#   sort_order: 22
+#   tab_category: alts
+#   primary: true
+#   visible: true
+#
+# - id: xtphkd
+#   code: 49
+#   name: XTP/HKD
+#   base_unit: xtp
+#   quote_unit: hkd
+#   bid: {fee: 0.003, currency: hkd, fixed: 2}
+#   ask: {fee: 0.003, currency: xtp, fixed: 4}
+#   sort_order: 10
+#   tab_category: hkd
+#   primary: true
+#   visible: true
+#
+# - id: xtpusx
+#   code: 50
+#   name: XTP/USX
+#   base_unit: xtp
+#   quote_unit: usx
+#   bid: {fee: 0.003, currency: usx, fixed: 2}
+#   ask: {fee: 0.003, currency: xtp, fixed: 4}
+#   sort_order: 26
+#   tab_category: alts
+#   primary: true
+#   visible: true
+
+- id: cnxhkx
+  code: 51
+  name: CNX/HKX
+  base_unit: cnx
+  quote_unit: hkx
+  bid: {fee: 0.001, currency: hkx, fixed: 2}
+  ask: {fee: 0.001, currency: cnx, fixed: 2}
+  sort_order: 43
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: cnxusx
+  code: 52
+  name: CNX/USX
+  base_unit: cnx
+  quote_unit: usx
+  bid: {fee: 0.001, currency: usx, fixed: 2}
+  ask: {fee: 0.001, currency: cnx, fixed: 2}
+  sort_order: 44
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: euxusx
+  code: 53
+  name: EUX/USX
+  base_unit: eux
+  quote_unit: usx
+  bid: {fee: 0.001, currency: usx, fixed: 2}
+  ask: {fee: 0.001, currency: eux, fixed: 2}
+  sort_order: 45
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: eurusx
+  code: 54
+  name: EUR/USX
+  base_unit: eur
+  quote_unit: usx
+  bid: {fee: 0.001, currency: usx, fixed: 2}
+  ask: {fee: 0.001, currency: eur, fixed: 2}
+  sort_order: 46
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: tryusx
+  code: 55
+  name: TRY/USX
+  base_unit: try
+  quote_unit: usx
+  bid: {fee: 0.001, currency: usx, fixed: 2}
+  ask: {fee: 0.001, currency: try, fixed: 2}
+  sort_order: 47
+  tab_category: alts
+  primary: true
+  visible: true
+
+- id: pcwhkd
+  code: 56
+  name: PCW/HKD
+  base_unit: pcw
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2}
+  ask: {fee: 0.003, currency: pcw, fixed: 2}
+  sort_order: 48
+  tab_category: hkd
+  primary: true
+  visible: false
+
+- id: pcthkd
+  code: 57
+  name: PCT/HKD
+  base_unit: pct
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2}
+  ask: {fee: 0.003, currency: pct, fixed: 2}
+  market_type: consumer_token_market
+  sort_order: 48
+  tab_category: hkd
+  primary: true
+  visible: true
+
+- id: sskhkd
+  code: 58
+  name: SSK/HKD
+  base_unit: ssk
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2}
+  ask: {fee: 0.003, currency: ssk, fixed: 2}
+  market_type: consumer_token_market
+  sort_order: 50
+  tab_category: hkd
+  primary: true
+  visible: true
+
+- id: tbthkd
+  code: 59
+  name: TBT/HKD
+  base_unit: tbt
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2}
+  ask: {fee: 0.003, currency: tbt, fixed: 2}
+  sort_order: 51
+  tab_category: hkd
+  primary: true
+  visible: true
+
+- id: usdthkd
+  code: 60
+  name: USDT/HKD
+  base_unit: usdt
+  quote_unit: hkd
+  bid: {fee: 0.005, currency: hkd, fixed: 2}
+  ask: {fee: 0.005, currency: usdt, fixed: 2}
+  sort_order: 52
+  tab_category: hkd
+  primary: true
+  visible: true
+
+- id: goldhkd
+  code: 82
+  name: GOLD/HKD
+  base_unit: gold
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: gold, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 53
+  tab_category: hkd
+  primary: true
+  visible: true
+
+- id: filhkd
+  code: 83
+  name: FIL/HKD
+  base_unit: fil
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fil, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: hkd
+  primary: true
+  visible: true
+
+- id: fmt1t001usdt
+  code: 83
+  name: FMT1T001/USDT
+  base_unit: fmt1t001
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt1t001, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt1t002usdt
+  code: 84
+  name: FMT1T002/USDT
+  base_unit: fmt1t002
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt1t002, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt1t003usdt
+  code: 85
+  name: FMT1T003/USDT
+  base_unit: fmt1t003
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt1t003, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt1t004usdt
+  code: 86
+  name: FMT1T004/USDT
+  base_unit: fmt1t004
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt1t004, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt1t005usdt
+  code: 87
+  name: FMT1T005/USDT
+  base_unit: fmt1t005
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt1t005, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt1t006usdt
+  code: 88
+  name: FMT1T006/USDT
+  base_unit: fmt1t006
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt1t006, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt1t007usdt
+  code: 89
+  name: FMT1T007/USDT
+  base_unit: fmt1t007
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt1t007, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt1t008usdt
+  code: 90
+  name: FMT1T008/USDT
+  base_unit: fmt1t008
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt1t008, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt1t009usdt
+  code: 91
+  name: FMT1T009/USDT
+  base_unit: fmt1t009
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt1t009, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt1t010usdt
+  code: 92
+  name: FMT1T010/USDT
+  base_unit: fmt1t010
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt1t010, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt2t001usdt
+  code: 93
+  name: FMT2T001/USDT
+  base_unit: fmt2t001
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt2t001, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt2t002usdt
+  code: 94
+  name: FMT2T002/USDT
+  base_unit: fmt2t002
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt2t002, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt2t003usdt
+  code: 95
+  name: FMT2T003/USDT
+  base_unit: fmt2t003
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt2t003, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt2t004usdt
+  code: 96
+  name: FMT2T004/USDT
+  base_unit: fmt2t004
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt2t004, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt2t005usdt
+  code: 97
+  name: FMT2T005/USDT
+  base_unit: fmt2t005
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt2t005, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt2t006usdt
+  code: 98
+  name: FMT2T006/USDT
+  base_unit: fmt2t006
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt2t006, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt2t007usdt
+  code: 99
+  name: FMT2T007/USDT
+  base_unit: fmt2t007
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt2t007, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt2t008usdt
+  code: 100
+  name: FMT2T008/USDT
+  base_unit: fmt2t008
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt2t008, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt2t009usdt
+  code: 101
+  name: FMT2T009/USDT
+  base_unit: fmt2t009
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt2t009, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt2t010usdt
+  code: 102
+  name: FMT2T010/USDT
+  base_unit: fmt2t010
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt2t010, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt3t001usdt
+  code: 103
+  name: FMT3T001/USDT
+  base_unit: fmt3t001
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt3t001, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt3t002usdt
+  code: 104
+  name: FMT3T002/USDT
+  base_unit: fmt3t002
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt3t002, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt3t003usdt
+  code: 105
+  name: FMT3T003/USDT
+  base_unit: fmt3t003
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt3t003, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt3t004usdt
+  code: 106
+  name: FMT3T004/USDT
+  base_unit: fmt3t004
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt3t004, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt3t005usdt
+  code: 107
+  name: FMT3T005/USDT
+  base_unit: fmt3t005
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt3t005, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt3t006usdt
+  code: 108
+  name: FMT3T006/USDT
+  base_unit: fmt3t006
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt3t006, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt3t007usdt
+  code: 109
+  name: FMT3T007/USDT
+  base_unit: fmt3t007
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt3t007, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt3t008usdt
+  code: 110
+  name: FMT3T008/USDT
+  base_unit: fmt3t008
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt3t008, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt3t009usdt
+  code: 111
+  name: FMT3T009/USDT
+  base_unit: fmt3t009
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt3t009, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: fmt3t010usdt
+  code: 112
+  name: FMT3T010/USDT
+  base_unit: fmt3t010
+  quote_unit: usdt
+  bid: {fee: 0.003, currency: usdt, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: fmt3t010, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 54
+  tab_category: alts
+  primary: true
+  visible: false
+
+- id: linkhkd
+  code: 113
+  name: LINK/HKD
+  base_unit: link
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: link, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: mkrhkd
+  code: 114
+  name: MKR/HKD
+  base_unit: mkr
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: mkr, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: snxhkd
+  code: 115
+  name: SNX/HKD
+  base_unit: snx
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: snx, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: unihkd
+  code: 116
+  name: UNI/HKD
+  base_unit: uni
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: uni, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: sushihkd
+  code: 117
+  name: SUSHI/HKD
+  base_unit: sushi
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: sushi, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: crvhkd
+  code: 118
+  name: CRV/HKD
+  base_unit: crv
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: crv, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: 1inchhkd
+  code: 119
+  name: 1INCH/HKD
+  base_unit: oneinch
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: oneinch, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: balhkd
+  code: 120
+  name: BAL/HKD
+  base_unit: bal
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: bal, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: lonhkd
+  code: 121
+  name: LON/HKD
+  base_unit: lon
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: lon, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: yfihkd
+  code: 122
+  name: YFI/HKD
+  base_unit: yfi
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: yfi, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: comphkd
+  code: 123
+  name: COMP/HKD
+  base_unit: comp
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: comp, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: aavehkd
+  code: 124
+  name: AAVE/HKD
+  base_unit: aave
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: aave, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: defi
+  primary: true
+  visible: false
+
+- id: usdchkd
+  code: 125
+  name: USDC/HKD
+  base_unit: usdc
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: usdc, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: hkd
+  primary: true
+  visible: false
+
+- id: busdhkd
+  code: 126
+  name: BUSD/HKD
+  base_unit: busd
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: busd, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: hkd
+  primary: true
+  visible: false
+
+- id: daihkd
+  code: 127
+  name: DAI/HKD
+  base_unit: dai
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: dai, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: hkd
+  primary: true
+  visible: false
+
+- id: matichkd
+  code: 128
+  name: MATIC/HKD
+  base_unit: matic
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: matic, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: inno
+  primary: true
+  visible: false
+
+- id: ftmhkd
+  code: 129
+  name: FTM/HKD
+  base_unit: ftm
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: ftm, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: inno
+  primary: true
+  visible: false
+
+- id: ftthkd
+  code: 130
+  name: FTT/HKD
+  base_unit: ftt
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: ftt, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: inno
+  primary: true
+  visible: false
+
+- id: manahkd
+  code: 131
+  name: MANA/HKD
+  base_unit: mana
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: mana, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: inno
+  primary: true
+  visible: false
+
+- id: sandhkd
+  code: 132
+  name: SAND/HKD
+  base_unit: sand
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: sand, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: inno
+  primary: true
+  visible: false
+
+- id: dydxhkd
+  code: 133
+  name: DYDX/HKD
+  base_unit: dydx
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: dydx, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: inno
+  primary: true
+  visible: false
+
+- id: alicehkd
+  code: 134
+  name: ALICE/HKD
+  base_unit: alice
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: alice, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: inno
+  primary: true
+  visible: false
+
+- id: c98hkd
+  code: 135
+  name: C98/HKD
+  base_unit: c98
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: c98, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: inno
+  primary: true
+  visible: false
+
+- id: galahkd
+  code: 136
+  name: GALA/HKD
+  base_unit: gala
+  quote_unit: hkd
+  bid: {fee: 0.003, currency: hkd, fixed: 2, hero_fee: 0, vip_fee: 0.001}
+  ask: {fee: 0.003, currency: gala, fixed: 4, hero_fee: 0, vip_fee: 0.001}
+  sort_order: 2
+  tab_category: inno
+  primary: true
+  visible: false

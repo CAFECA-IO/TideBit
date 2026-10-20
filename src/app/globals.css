@@ -1,0 +1,149 @@
+@import "tailwindcss";
+
+/* TideBit 品牌色（沿用舊站）：藍 #4597e6 → 綠 #6cc674 漸層、青綠 #1ec6a3、深藍 #2a3560 */
+:root {
+  --brand-blue: #4597e6;
+  --brand-green: #6cc674;
+  --brand-teal: #1ec6a3;
+  --brand-navy: #2a3560;
+  --brand-navy-2: #222b4f;
+  --brand-gradient: linear-gradient(135deg, #4597e6 0%, #6cc674 100%);
+
+  --bg: #f3f5fa;
+  --surface: #ffffff;
+  --surface-2: #f7f9fc;
+  --border: #e2e7f0;
+  --text: #1b2236;
+  --muted: #66708a;
+  --primary: #2a3560;
+  --primary-hover: #1f2849;
+  --primary-fg: #ffffff;
+  --accent: #129c80; /* 青綠（深一階，確保白底文字可讀） */
+  --accent-soft: #e3f7f2;
+  --info: #2f7fd0;
+  --info-soft: #e7f1fc;
+  --success: #2e9d4f;
+  --success-soft: #e6f5ea;
+  --warning: #b7791f;
+  --warning-soft: #fdf3e1;
+  --danger: #d54346;
+  --danger-soft: #fbe9e9;
+  --ring: rgba(69, 151, 230, 0.35);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #11162a;
+    --surface: #182040;
+    --surface-2: #1d2648;
+    --border: #2b3560;
+    --text: #e8ecf6;
+    --muted: #97a1bd;
+    --primary: #4597e6;
+    --primary-hover: #3a86d1;
+    --primary-fg: #ffffff;
+    --accent: #3fd3b2;
+    --accent-soft: rgba(30, 198, 163, 0.14);
+    --info: #6aaef0;
+    --info-soft: rgba(69, 151, 230, 0.15);
+    --success: #6cc674;
+    --success-soft: rgba(108, 198, 116, 0.14);
+    --warning: #e8b04f;
+    --warning-soft: rgba(232, 176, 79, 0.14);
+    --danger: #f07174;
+    --danger-soft: rgba(213, 67, 70, 0.16);
+  }
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-border: var(--border);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-primary: var(--primary);
+  --color-primary-hover: var(--primary-hover);
+  --color-primary-fg: var(--primary-fg);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-info: var(--info);
+  --color-info-soft: var(--info-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warning: var(--warning);
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-navy: var(--brand-navy);
+  --color-navy-2: var(--brand-navy-2);
+  --color-brand-blue: var(--brand-blue);
+  --color-brand-green: var(--brand-green);
+  --color-brand-teal: var(--brand-teal);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang TC", "Noto Sans TC", "Microsoft JhengHei",
+    "Hiragino Sans", "Noto Sans JP", "Malgun Gothic", "Noto Sans KR", Roboto, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+.num {
+  font-variant-numeric: tabular-nums;
+}
+
+.bg-brand-gradient {
+  background-image: var(--brand-gradient);
+}
+
+.text-brand-gradient {
+  background-image: var(--brand-gradient);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 2px;
+}
+
+/* 表格 */
+.tb-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+.tb-table th {
+  text-align: left;
+  font-weight: 500;
+  color: var(--muted);
+  font-size: 0.75rem;
+  padding: 0.625rem 1rem;
+  border-bottom: 1px solid var(--border);
+  white-space: nowrap;
+  background: var(--surface-2);
+}
+.tb-table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--border);
+  vertical-align: middle;
+}
+.tb-table tr:last-child td {
+  border-bottom: 0;
+}
+.tb-table th.r,
+.tb-table td.r {
+  text-align: right;
+}
+.tb-table tbody tr:hover {
+  background: var(--surface-2);
+}
