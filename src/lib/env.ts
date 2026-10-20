@@ -12,7 +12,7 @@ function required(name: string, devFallback?: string): string {
 
 const DEFAULT_ORIGINS = "https://legacy.tidebit-defi.com,https://tidebit.com";
 
-/** "tidebit.com, http://localhost:3000/" → ["https://tidebit.com", "http://localhost:3000"] */
+/** "tidebit.com, http://localhost:10011/" → ["https://tidebit.com", "http://localhost:10011"] */
 export function parseOrigins(raw: string, prod: boolean): string[] {
   const out: string[] = [];
   for (const part of raw.split(/[,\s]+/)) {
@@ -25,7 +25,11 @@ export function parseOrigins(raw: string, prod: boolean): string[] {
       console.warn(`[env] APP_ORIGINS 格式錯誤，已略過：${v}`);
     }
   }
-  if (!prod && !out.includes("http://localhost:3000")) out.push("http://localhost:3000");
+  if (!prod) {
+    // 開發環境自動允許本機網址
+    const port = process.env.PORT || "10011";
+    for (const o of [`http://localhost:${port}`, `http://127.0.0.1:${port}`]) if (!out.includes(o)) out.push(o);
+  }
   return out;
 }
 
@@ -35,7 +39,7 @@ export const env = {
   isProd,
   /**
    * 允許的網站 origin（可多個，逗號分隔；CAFECA 簽章的 domain 必須是其中之一）。
-   * 未設定時預設為 legacy.tidebit-defi.com 與 tidebit.com；開發環境另外允許 http://localhost:3000。
+   * 未設定時預設為 legacy.tidebit-defi.com 與 tidebit.com；開發環境另外允許 http://localhost:10011 與 http://127.0.0.1:10011。
    */
   get appOrigins(): string[] {
     return parseOrigins(process.env.APP_ORIGINS || process.env.APP_ORIGIN || DEFAULT_ORIGINS, isProd);

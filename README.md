@@ -42,7 +42,7 @@ Session 與 CAFECA 一次性 nonce 使用簽章 cookie（`SESSION_SECRET`），�
 cp .env.example .env     # 設定 DATABASE_URL、APP_ORIGINS、SESSION_SECRET、ADMINS
 npm install              # 會自動 prisma generate
 npm run db:check         # 唯讀檢查：資料表／欄位、id 序號、幣種對應、管理員設定
-npm run dev              # http://localhost:3000，後台 /admin
+npm run dev              # http://localhost:10011，後台 /admin（npm start 同樣使用 port 10011）
 ```
 
 正式環境：`npm run build && npm start`。
