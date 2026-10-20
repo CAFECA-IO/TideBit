@@ -171,10 +171,10 @@ export default async function AmlPage({ searchParams }: PageProps<"/admin/aml">)
               <tbody>
                 {[...list].reverse().map((e) => (
                   <tr key={e.id}>
-                    <td>
+                    <td data-label="類型">
                       <Badge>{BLACKLIST_LABEL[e.type]}</Badge>
                     </td>
-                    <td className="break-all font-mono text-xs">
+                    <td data-label="內容" className="break-all font-mono text-xs">
                       {e.type === "member" ? (
                         <a href={`/admin/members/${e.value}`} className="text-accent hover:underline">
                           #{e.value}
@@ -183,11 +183,11 @@ export default async function AmlPage({ searchParams }: PageProps<"/admin/aml">)
                         e.value
                       )}
                     </td>
-                    <td className="text-sm">{e.reason}</td>
-                    <td className="text-xs text-muted">{e.by}</td>
-                    <td className="whitespace-nowrap text-xs text-muted">{fmtDateTime(new Date(e.at))}</td>
+                    <td data-label="原因" className="text-sm">{e.reason}</td>
+                    <td data-label="加入者" className="text-xs text-muted">{e.by}</td>
+                    <td data-label="時間" className="whitespace-nowrap text-xs text-muted">{fmtDateTime(new Date(e.at))}</td>
                     {editable && (
-                      <td className="r">
+                      <td data-label="" className="r">
                         <ActionForm action={blacklistRemoveAction}>
                           <input type="hidden" name="id" value={e.id} />
                           <SubmitButton variant="ghost" size="sm">

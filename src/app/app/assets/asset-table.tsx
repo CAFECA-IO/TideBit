@@ -52,7 +52,7 @@ export function AssetTable({ holdings, canWithdraw }: { holdings: Holding[]; can
               <tbody>
                 {rows.map((h) => (
                   <tr key={h.code}>
-                    <td>
+                    <td data-label={t("common.currency")}>
                       <Link href={`/app/assets/${h.code}`} className="flex items-center gap-3">
                         <CoinIcon code={h.code} size={30} />
                         <span>
@@ -61,10 +61,10 @@ export function AssetTable({ holdings, canWithdraw }: { holdings: Holding[]; can
                         </span>
                       </Link>
                     </td>
-                    <td className="r num font-medium">{fmtAmount(h.total, 8)}</td>
-                    <td className="r num">{fmtAmount(h.balance, 8)}</td>
-                    <td className="r num text-muted">{fmtAmount(h.locked, 8)}</td>
-                    <td className="r">
+                    <td data-label={t("assets.total")} className="r num font-medium">{fmtAmount(h.total, 8)}</td>
+                    <td data-label={t("assets.available")} className="r num">{fmtAmount(h.balance, 8)}</td>
+                    <td data-label={t("assets.locked")} className="r num text-muted">{fmtAmount(h.locked, 8)}</td>
+                    <td data-label="" className="r">
                       <div className="flex items-center justify-end gap-2">
                         {h.withdrawEnabled ? (
                           canWithdraw && !isZeroAmount(h.balance) ? (

@@ -109,31 +109,31 @@ export default async function AdminWithdrawals({ searchParams }: PageProps<"/adm
                   const b = w.memberId ? bindings.get(w.memberId.toString()) : undefined;
                   return (
                     <tr key={String(w.id)}>
-                      <td className="whitespace-nowrap text-muted">{fmtDateTime(w.createdAt)}</td>
-                      <td>
+                      <td data-label="申請時間" className="whitespace-nowrap text-muted">{fmtDateTime(w.createdAt)}</td>
+                      <td data-label="編號">
                         <Link href={`/admin/withdrawals/${w.id}`} className="font-mono text-xs text-accent hover:underline">
                           {w.sn || `#${w.id}`}
                         </Link>
                       </td>
-                      <td className="max-w-48 truncate">
+                      <td data-label="會員" className="max-w-48 truncate">
                         <Link href={`/admin/members/${w.memberId}`} className="hover:text-accent">
                           {w.member?.email ?? `#${w.memberId}`}
                         </Link>
                       </td>
-                      <td>
+                      <td data-label="實名">
                         <IBadge status={b?.status ?? "UNBOUND"} />
                       </td>
-                      <td>
+                      <td data-label="幣種">
                         <span className="flex items-center gap-1.5 font-medium">
                           <CoinIcon code={c.code} size={18} />
                           {c.code.toUpperCase()}
                         </span>
                       </td>
-                      <td className="r num font-medium">{fmtAmount(w.amount ?? 0, 8)}</td>
-                      <td className="font-mono text-xs" title={w.fundUid ?? ""}>
+                      <td data-label="到帳數量" className="r num font-medium">{fmtAmount(w.amount ?? 0, 8)}</td>
+                      <td data-label="地址" className="font-mono text-xs" title={w.fundUid ?? ""}>
                         {shortAddr(w.fundUid)}
                       </td>
-                      <td>
+                      <td data-label="狀態">
                         <Link href={`/admin/withdrawals/${w.id}`}>
                           <WBadge aasm={w.aasmState} />
                         </Link>

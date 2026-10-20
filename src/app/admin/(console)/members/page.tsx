@@ -72,18 +72,18 @@ export default async function MembersPage({ searchParams }: PageProps<"/admin/me
               <tbody>
                 {rows.slice(0, PAGE_SIZE).map((m) => (
                   <tr key={String(m.id)}>
-                    <td className="num text-muted">{String(m.id)}</td>
-                    <td>
+                    <td data-label="ID" className="num text-muted">{String(m.id)}</td>
+                    <td data-label="Email">
                       <Link href={`/admin/members/${m.id}`} className="font-medium text-accent hover:underline">
                         {m.email ?? "—"}
                       </Link>
                     </td>
-                    <td>{m.name || "—"}</td>
-                    <td>
+                    <td data-label="姓名">{m.name || "—"}</td>
+                    <td data-label="實名">
                       <IBadge status={bindings.get(m.id.toString())?.status ?? "UNBOUND"} />
                     </td>
-                    <td>{m.disabled ? <Badge tone="danger">停權</Badge> : m.disableWithdraw ? <Badge tone="warning">禁止提領</Badge> : <Badge tone="success">正常</Badge>}</td>
-                    <td className="text-muted">{fmtDate(m.createdAt)}</td>
+                    <td data-label="狀態">{m.disabled ? <Badge tone="danger">停權</Badge> : m.disableWithdraw ? <Badge tone="warning">禁止提領</Badge> : <Badge tone="success">正常</Badge>}</td>
+                    <td data-label="註冊" className="text-muted">{fmtDate(m.createdAt)}</td>
                   </tr>
                 ))}
               </tbody>

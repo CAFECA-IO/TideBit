@@ -65,16 +65,16 @@ export default async function AdminTickets({ searchParams }: PageProps<"/admin/t
               <tbody>
                 {rows.slice(0, PAGE_SIZE).map((tk) => (
                   <tr key={String(tk.id)}>
-                    <td className="whitespace-nowrap text-muted">{fmtDateTime(tk.lastReplyAt ?? tk.updatedAt)}</td>
-                    <td className="num text-muted">{String(tk.id)}</td>
-                    <td className="max-w-80 truncate">
+                    <td data-label="最後更新" className="whitespace-nowrap text-muted">{fmtDateTime(tk.lastReplyAt ?? tk.updatedAt)}</td>
+                    <td data-label="#" className="num text-muted">{String(tk.id)}</td>
+                    <td data-label="主旨" className="max-w-80 truncate">
                       <Link href={`/admin/tickets/${tk.id}`} className="font-medium text-accent hover:underline">
                         {splitContent(tk.content).subject}
                       </Link>
                     </td>
-                    <td className="max-w-48 truncate">{tk.author?.email ?? `#${tk.authorId}`}</td>
-                    <td className="r num">{tk._count.comments}</td>
-                    <td>
+                    <td data-label="會員" className="max-w-48 truncate">{tk.author?.email ?? `#${tk.authorId}`}</td>
+                    <td data-label="回覆數" className="r num">{tk._count.comments}</td>
+                    <td data-label="狀態">
                       <TBadge status={ticketStatus(tk.state)} />
                     </td>
                   </tr>

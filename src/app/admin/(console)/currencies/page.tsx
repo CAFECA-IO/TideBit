@@ -44,7 +44,7 @@ export default async function CurrenciesPage() {
                 const sum = tt ? new Prisma.Decimal(tt._sum.balance ?? 0).plus(tt._sum.locked ?? 0) : null;
                 return (
                   <tr key={c.id}>
-                    <td>
+                    <td data-label="幣種">
                       <span className="flex items-center gap-2">
                         <CoinIcon code={c.code} size={24} />
                         <span>
@@ -53,13 +53,13 @@ export default async function CurrenciesPage() {
                         </span>
                       </span>
                     </td>
-                    <td className="text-sm">{c.network ?? "—"}</td>
-                    <td>{c.isFiat ? <Badge>法幣</Badge> : c.withdrawEnabled ? <Badge tone="success">開放</Badge> : <Badge>關閉</Badge>}</td>
-                    <td className="r num">{fmtAmount(c.withdrawFee, 8)}</td>
-                    <td className="r num">{fmtAmount(c.withdrawMin, 8)}</td>
-                    <td className="r num">{tt?._count._all ?? 0}</td>
-                    <td className="r num font-medium">{sum ? fmtAmount(sum, 8) : "—"}</td>
-                    <td className="r">
+                    <td data-label="網路" className="text-sm">{c.network ?? "—"}</td>
+                    <td data-label="提領">{c.isFiat ? <Badge>法幣</Badge> : c.withdrawEnabled ? <Badge tone="success">開放</Badge> : <Badge>關閉</Badge>}</td>
+                    <td data-label="手續費" className="r num">{fmtAmount(c.withdrawFee, 8)}</td>
+                    <td data-label="最低" className="r num">{fmtAmount(c.withdrawMin, 8)}</td>
+                    <td data-label="持有人數" className="r num">{tt?._count._all ?? 0}</td>
+                    <td data-label="會員總餘額" className="r num font-medium">{sum ? fmtAmount(sum, 8) : "—"}</td>
+                    <td data-label="" className="r">
                       <Link href={`/admin/currencies/${c.code}`} className="text-sm text-accent hover:underline">
                         {editable ? "設定" : "檢視"}
                       </Link>

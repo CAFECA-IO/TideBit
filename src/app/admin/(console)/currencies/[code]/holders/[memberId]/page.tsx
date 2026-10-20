@@ -154,14 +154,14 @@ export default async function HolderDetail({ params, searchParams }: PageProps<"
               <tbody>
                 {flows.map((f) => (
                   <tr key={f.reason}>
-                    <td>
+                    <td data-label="原因">
                       {t(reasonKey(f.reason))} <span className="text-xs text-muted">({f.reason})</span>
                     </td>
-                    <td className="r num">{f.count.toLocaleString()}</td>
-                    <td className="r num text-success">{f.inflow.isZero() ? "—" : fmtAmount(f.inflow, dp)}</td>
-                    <td className="r num text-danger">{f.outflow.isZero() ? "—" : fmtAmount(f.outflow, dp)}</td>
-                    <td className="r num font-medium">{fmtAmount(f.net, dp, { sign: true })}</td>
-                    <td className="whitespace-nowrap text-muted">{fmtDateTime(f.lastAt)}</td>
+                    <td data-label="筆數" className="r num">{f.count.toLocaleString()}</td>
+                    <td data-label="流入" className="r num text-success">{f.inflow.isZero() ? "—" : fmtAmount(f.inflow, dp)}</td>
+                    <td data-label="流出" className="r num text-danger">{f.outflow.isZero() ? "—" : fmtAmount(f.outflow, dp)}</td>
+                    <td data-label="淨額" className="r num font-medium">{fmtAmount(f.net, dp, { sign: true })}</td>
+                    <td data-label="最後一筆" className="whitespace-nowrap text-muted">{fmtDateTime(f.lastAt)}</td>
                   </tr>
                 ))}
               </tbody>

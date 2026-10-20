@@ -57,13 +57,13 @@ export default async function AuditPage({ searchParams }: PageProps<"/admin/audi
                   const [type, , name] = (r.whodunnit ?? "").split(":");
                   return (
                     <tr key={String(r.id)}>
-                      <td className="whitespace-nowrap text-muted">{fmtDateTime(r.createdAt)}</td>
-                      <td className="whitespace-nowrap">
+                      <td data-label="時間" className="whitespace-nowrap text-muted">{fmtDateTime(r.createdAt)}</td>
+                      <td data-label="操作者" className="whitespace-nowrap">
                         <span className="text-xs text-muted">{type}</span> {name}
                       </td>
-                      <td className="font-mono text-xs">{r.event}</td>
-                      <td className="num text-xs">{r.itemId ? String(r.itemId) : "—"}</td>
-                      <td className="max-w-md">
+                      <td data-label="動作" className="font-mono text-xs">{r.event}</td>
+                      <td data-label="對象 ID" className="num text-xs">{r.itemId ? String(r.itemId) : "—"}</td>
+                      <td data-label="資料" className="max-w-md">
                         {r.object ? (
                           <code className="line-clamp-2 break-all text-[11px] text-muted" title={r.object}>
                             {r.object}

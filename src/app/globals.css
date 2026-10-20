@@ -147,3 +147,68 @@ body {
 .tb-table tbody tr:hover {
   background: var(--surface-2);
 }
+
+/* 手機：表格改為卡片，每列一張，欄名取自 data-label */
+@media (max-width: 639px) {
+  .tb-table thead {
+    display: none;
+  }
+  .tb-table,
+  .tb-table tbody,
+  .tb-table tr {
+    display: block;
+    width: 100%;
+  }
+  .tb-table tr {
+    padding: 0.625rem 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .tb-table tbody tr:last-child {
+    border-bottom: 0;
+  }
+  .tb-table tbody tr:hover {
+    background: transparent;
+  }
+  .tb-table td,
+  .tb-table td.r {
+    display: block;
+    padding: 0.3125rem 0;
+    border: 0;
+    text-align: right;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+  .tb-table td::after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+  .tb-table td::before {
+    content: attr(data-label);
+    float: left;
+    max-width: 45%;
+    margin-right: 1rem;
+    color: var(--muted);
+    font-size: 0.75rem;
+    font-weight: 400;
+    line-height: 1.5rem;
+    text-align: left;
+  }
+  /* 儲存格內的 flex 容器改為行內，才會靠右排列 */
+  .tb-table td > .flex,
+  .tb-table td > a > .flex {
+    display: inline-flex;
+    vertical-align: middle;
+  }
+  .tb-table td:not([data-label])::before,
+  .tb-table td[data-label=""]::before {
+    display: none;
+  }
+  .tb-table td:not([data-label]),
+  .tb-table td[data-label=""] {
+    text-align: left;
+  }
+  .tb-table td:empty {
+    display: none;
+  }
+}

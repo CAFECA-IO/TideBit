@@ -192,8 +192,8 @@ async function Holders({ currencyId, code, precision, q, page }: { currencyId: b
               <tbody>
                 {rows.slice(0, PAGE_SIZE).map((h, i) => (
                   <tr key={String(h.memberId)}>
-                    <td className="r num text-muted">{q ? "" : (page - 1) * PAGE_SIZE + i + 1}</td>
-                    <td>
+                    <td data-label="#" className="r num text-muted">{q ? "" : (page - 1) * PAGE_SIZE + i + 1}</td>
+                    <td data-label="會員">
                       <Link href={`/admin/currencies/${code}/holders/${h.memberId}`} className="font-medium hover:text-accent hover:underline">
                         {h.email ?? `#${h.memberId}`}
                       </Link>
@@ -201,10 +201,10 @@ async function Holders({ currencyId, code, precision, q, page }: { currencyId: b
                       {h.disabled && <Badge tone="danger" className="ml-2">停權</Badge>}
                       {!h.disabled && h.withdrawDisabled && <Badge tone="warning" className="ml-2">禁止提領</Badge>}
                     </td>
-                    <td className="r num">{fmtAmount(h.balance, dp)}</td>
-                    <td className="r num text-muted">{h.locked.isZero() ? "—" : fmtAmount(h.locked, dp)}</td>
-                    <td className={clsx("r num font-medium", h.total.isNegative() && "text-danger")}>{fmtAmount(h.total, dp)}</td>
-                    <td className="r num text-muted">{share(h.total)}</td>
+                    <td data-label="可用" className="r num">{fmtAmount(h.balance, dp)}</td>
+                    <td data-label="凍結" className="r num text-muted">{h.locked.isZero() ? "—" : fmtAmount(h.locked, dp)}</td>
+                    <td data-label="合計" className={clsx("r num font-medium", h.total.isNegative() && "text-danger")}>{fmtAmount(h.total, dp)}</td>
+                    <td data-label="占比" className="r num text-muted">{share(h.total)}</td>
                   </tr>
                 ))}
               </tbody>

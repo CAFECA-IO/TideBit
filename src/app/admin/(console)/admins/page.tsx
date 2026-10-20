@@ -77,7 +77,7 @@ export default async function AdminsPage() {
                   const self = a.memberId === admin.id;
                   return (
                     <tr key={`${a.source}:${a.email}`}>
-                      <td>
+                      <td data-label="帳號">
                         {a.memberId ? (
                           <a href={`/admin/members/${a.memberId}`} className="font-medium hover:text-accent hover:underline">
                             {a.email}
@@ -90,10 +90,10 @@ export default async function AdminsPage() {
                         {!a.memberId && <Badge tone="danger" className="ml-2">找不到會員</Badge>}
                         {a.memberId && a.disabled && <Badge tone="danger" className="ml-2">已停權</Badge>}
                       </td>
-                      <td>{ROLE_LABEL[a.role]}</td>
-                      <td>{a.source === "env" ? <Badge>ADMINS 環境變數</Badge> : <Badge tone="info">後台指派</Badge>}</td>
-                      <td>{a.cafecaBound ? <Badge tone="success">已綁定</Badge> : <Badge>未綁定</Badge>}</td>
-                      <td className="text-xs text-muted">
+                      <td data-label="角色">{ROLE_LABEL[a.role]}</td>
+                      <td data-label="來源">{a.source === "env" ? <Badge>ADMINS 環境變數</Badge> : <Badge tone="info">後台指派</Badge>}</td>
+                      <td data-label="CAFECA">{a.cafecaBound ? <Badge tone="success">已綁定</Badge> : <Badge>未綁定</Badge>}</td>
+                      <td data-label="指派" className="text-xs text-muted">
                         {a.source === "db" ? (
                           <>
                             {a.assignedBy ?? "—"}
@@ -104,7 +104,7 @@ export default async function AdminsPage() {
                           "—"
                         )}
                       </td>
-                      <td className="r">
+                      <td data-label="操作" className="r">
                         {!self && a.memberId && (
                           <div className="flex flex-wrap justify-end gap-2">
                             {a.cafecaBound && (

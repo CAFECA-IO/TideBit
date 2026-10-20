@@ -94,16 +94,16 @@ export default async function AdminDashboard() {
                   const c = cm.get(w.currency) ?? unknownCurrency(w.currency);
                   return (
                     <tr key={String(w.id)}>
-                      <td className="whitespace-nowrap text-muted">{fmtDateTime(w.updatedAt)}</td>
-                      <td>
+                      <td data-label="更新時間" className="whitespace-nowrap text-muted">{fmtDateTime(w.updatedAt)}</td>
+                      <td data-label="會員">
                         <Link href={`/admin/withdrawals/${w.id}`} className="font-medium hover:text-accent">
                           {w.member?.email ?? `#${w.memberId}`}
                         </Link>
                       </td>
-                      <td className="r num whitespace-nowrap">
+                      <td data-label="數量" className="r num whitespace-nowrap">
                         {fmtAmount(w.amount ?? 0, 8)} {c.code.toUpperCase()}
                       </td>
-                      <td className="r">
+                      <td data-label="狀態" className="r">
                         <WBadge aasm={w.aasmState} />
                       </td>
                     </tr>

@@ -59,13 +59,13 @@ export function LedgerTable({ rows, cm, t, locale, showCurrency = true, withdraw
         <tbody>
           {rows.map((v) => (
             <tr key={String(v.id)}>
-              <td className="whitespace-nowrap text-muted">{fmtDateTime(v.createdAt, locale)}</td>
+              <td data-label={t("common.time")} className="whitespace-nowrap text-muted">{fmtDateTime(v.createdAt, locale)}</td>
               {showCurrency && (
-                <td>
+                <td data-label={t("common.currency")}>
                   <Coin c={cur(cm, v.currency)} />
                 </td>
               )}
-              <td className="whitespace-nowrap">
+              <td data-label={t("history.reason")} className="whitespace-nowrap">
                 {t(reasonKey(v.reason))}
                 {v.modifiableType === "Withdraw" && v.modifiableId && (
                   <Link href={`${withdrawBase}/${v.modifiableId}`} className="ml-1 text-xs text-accent hover:underline">
@@ -73,13 +73,13 @@ export function LedgerTable({ rows, cm, t, locale, showCurrency = true, withdraw
                   </Link>
                 )}
               </td>
-              <td className="r">
+              <td data-label={t("assets.available")} className="r">
                 <Delta v={v.balance} />
               </td>
-              <td className="r">
+              <td data-label={t("assets.locked")} className="r">
                 <Delta v={v.locked} />
               </td>
-              <td className="r num">{fmtAmount(v.amount ?? 0, 8)}</td>
+              <td data-label={t("history.balanceAfter")} className="r num">{fmtAmount(v.amount ?? 0, 8)}</td>
             </tr>
           ))}
         </tbody>
@@ -109,23 +109,23 @@ export function WithdrawTable({ rows, cm, t, locale, withdrawBase = "/app/withdr
             const c = cur(cm, w.currency);
             return (
               <tr key={String(w.id)}>
-                <td className="whitespace-nowrap text-muted">
+                <td data-label={t("common.time")} className="whitespace-nowrap text-muted">
                   <Link href={`${withdrawBase}/${w.id}`} className="hover:text-accent hover:underline">
                     {fmtDateTime(w.createdAt, locale)}
                   </Link>
                 </td>
-                <td>
+                <td data-label={t("common.currency")}>
                   <Coin c={c} />
                 </td>
-                <td className="r num font-medium">{fmtAmount(w.amount ?? 0, 8)}</td>
-                <td className="r num text-muted">{fmtAmount(w.fee ?? 0, 8)}</td>
-                <td className="font-mono text-xs" title={w.fundUid ?? undefined}>
+                <td data-label={t("common.amount")} className="r num font-medium">{fmtAmount(w.amount ?? 0, 8)}</td>
+                <td data-label={t("common.fee")} className="r num text-muted">{fmtAmount(w.fee ?? 0, 8)}</td>
+                <td data-label={t("common.address")} className="font-mono text-xs" title={w.fundUid ?? undefined}>
                   {shortAddr(w.fundUid)}
                 </td>
-                <td>
+                <td data-label={t("common.txid")}>
                   <TxLink txid={w.txid} template={c.explorerTx} />
                 </td>
-                <td>
+                <td data-label={t("common.status")}>
                   <Link href={`${withdrawBase}/${w.id}`}>
                     <WithdrawBadge aasm={w.aasmState} t={t} />
                   </Link>
@@ -165,15 +165,15 @@ export function DepositTable({ rows, cm, t, locale }: { rows: Deposit[]; cm: CM;
             const c = cur(cm, d.currency);
             return (
               <tr key={String(d.id)}>
-                <td className="whitespace-nowrap text-muted">{fmtDateTime(d.createdAt, locale)}</td>
-                <td>
+                <td data-label={t("common.time")} className="whitespace-nowrap text-muted">{fmtDateTime(d.createdAt, locale)}</td>
+                <td data-label={t("common.currency")}>
                   <Coin c={c} />
                 </td>
-                <td className="r num font-medium">{fmtAmount(d.amount ?? 0, 8)}</td>
-                <td>
+                <td data-label={t("common.amount")} className="r num font-medium">{fmtAmount(d.amount ?? 0, 8)}</td>
+                <td data-label={t("common.txid")}>
                   <TxLink txid={d.txid} template={c.explorerTx} />
                 </td>
-                <td className="text-sm">{t(depositStateKey(d.aasmState))}</td>
+                <td data-label={t("common.status")} className="text-sm">{t(depositStateKey(d.aasmState))}</td>
               </tr>
             );
           })}
@@ -211,14 +211,14 @@ export function OrderTable({ rows, t, locale }: { rows: Order[]; t: T; locale: s
             const bid = o.type === "OrderBid";
             return (
               <tr key={String(o.id)}>
-                <td className="whitespace-nowrap text-muted">{fmtDateTime(o.createdAt, locale)}</td>
-                <td className="font-medium">{m.name}</td>
-                <td className={bid ? "text-success" : "text-danger"}>{t(bid ? "history.side.bid" : "history.side.ask")}</td>
-                <td>{o.ordType === "market" ? t("history.ordType.market") : t("history.ordType.limit")}</td>
-                <td className="r num">{o.price ? fmtAmount(o.price, m.quoteFixed) : "—"}</td>
-                <td className="r num">{fmtAmount(o.originVolume ?? 0, 8)}</td>
-                <td className="r num">{fmtAmount(dec(o.originVolume).minus(dec(o.volume)), 8)}</td>
-                <td className="whitespace-nowrap text-sm">{t(orderStateKey(o.state))}</td>
+                <td data-label={t("common.time")} className="whitespace-nowrap text-muted">{fmtDateTime(o.createdAt, locale)}</td>
+                <td data-label={t("history.market")} className="font-medium">{m.name}</td>
+                <td data-label={t("history.side")} className={bid ? "text-success" : "text-danger"}>{t(bid ? "history.side.bid" : "history.side.ask")}</td>
+                <td data-label={t("history.ordType")}>{o.ordType === "market" ? t("history.ordType.market") : t("history.ordType.limit")}</td>
+                <td data-label={t("history.price")} className="r num">{o.price ? fmtAmount(o.price, m.quoteFixed) : "—"}</td>
+                <td data-label={t("history.volume")} className="r num">{fmtAmount(o.originVolume ?? 0, 8)}</td>
+                <td data-label={t("history.filled")} className="r num">{fmtAmount(dec(o.originVolume).minus(dec(o.volume)), 8)}</td>
+                <td data-label={t("common.status")} className="whitespace-nowrap text-sm">{t(orderStateKey(o.state))}</td>
               </tr>
             );
           })}
@@ -249,12 +249,12 @@ export function TradeTable({ rows, t, locale, memberId }: { rows: Trade[]; t: T;
             const bid = tr.bidMemberId === memberId;
             return (
               <tr key={String(tr.id)}>
-                <td className="whitespace-nowrap text-muted">{fmtDateTime(tr.createdAt, locale)}</td>
-                <td className="font-medium">{m.name}</td>
-                <td className={bid ? "text-success" : "text-danger"}>{t(bid ? "history.side.bid" : "history.side.ask")}</td>
-                <td className="r num">{fmtAmount(tr.price ?? 0, m.quoteFixed)}</td>
-                <td className="r num">{fmtAmount(tr.volume ?? 0, 8)}</td>
-                <td className="r num">{fmtAmount(tr.funds ?? dec(tr.price).times(dec(tr.volume)), m.quoteFixed)}</td>
+                <td data-label={t("common.time")} className="whitespace-nowrap text-muted">{fmtDateTime(tr.createdAt, locale)}</td>
+                <td data-label={t("history.market")} className="font-medium">{m.name}</td>
+                <td data-label={t("history.side")} className={bid ? "text-success" : "text-danger"}>{t(bid ? "history.side.bid" : "history.side.ask")}</td>
+                <td data-label={t("history.price")} className="r num">{fmtAmount(tr.price ?? 0, m.quoteFixed)}</td>
+                <td data-label={t("history.volume")} className="r num">{fmtAmount(tr.volume ?? 0, 8)}</td>
+                <td data-label={t("history.total")} className="r num">{fmtAmount(tr.funds ?? dec(tr.price).times(dec(tr.volume)), m.quoteFixed)}</td>
               </tr>
             );
           })}

@@ -67,17 +67,17 @@ export default async function IdentityQueue({ searchParams }: PageProps<"/admin/
                   const m = a.member;
                   return (
                     <tr key={String(a.id)}>
-                      <td className="whitespace-nowrap text-muted">{fmtDateTime(a.createdAt)}</td>
-                      <td>
+                      <td data-label="綁定時間" className="whitespace-nowrap text-muted">{fmtDateTime(a.createdAt)}</td>
+                      <td data-label="會員">
                         <Link href={`/admin/members/${a.memberId}`} className="font-medium text-accent hover:underline">
                           {m?.email ?? `#${a.memberId}`}
                         </Link>
                       </td>
-                      <td>{m?.idDocuments[0]?.name || m?.name || "—"}</td>
-                      <td className="font-medium">{a.nickname ?? "—"}</td>
-                      <td>L{b?.level ?? 0}</td>
-                      <td className="font-mono text-xs">{shortAddr(a.uid)}</td>
-                      <td>
+                      <td data-label="舊系統姓名">{m?.idDocuments[0]?.name || m?.name || "—"}</td>
+                      <td data-label="CAFECA 證件姓名" className="font-medium">{a.nickname ?? "—"}</td>
+                      <td data-label="等級">L{b?.level ?? 0}</td>
+                      <td data-label="CAFECA" className="font-mono text-xs">{shortAddr(a.uid)}</td>
+                      <td data-label="提示">
                         <div className="flex flex-wrap gap-1">
                           {(b?.flags ?? []).map((f) => (
                             <Badge key={f} tone="warning">
@@ -86,7 +86,7 @@ export default async function IdentityQueue({ searchParams }: PageProps<"/admin/
                           ))}
                         </div>
                       </td>
-                      <td>
+                      <td data-label="狀態">
                         <IBadge status={b?.status ?? "UNBOUND"} />
                       </td>
                     </tr>

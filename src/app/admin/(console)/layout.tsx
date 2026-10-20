@@ -46,13 +46,17 @@ export default async function AdminLayout({ children }: { children: React.ReactN
       <header className="sticky top-0 z-20 border-b border-border bg-surface/90 backdrop-blur">
         <div className="flex h-14 items-center gap-3 px-4 sm:px-6">
           <AdminMobileNav items={items} />
+          <div className="flex items-center gap-2 lg:hidden">
+            <Logo height={20} href="/admin" />
+            <span className="rounded bg-surface-2 px-1.5 py-0.5 text-[10px] font-medium text-muted">ADMIN</span>
+          </div>
           <div className="ml-auto flex items-center gap-3 text-sm">
             <span className="hidden text-muted sm:inline">
               {admin.name} · {ROLE_LABEL[admin.role]}
             </span>
             <form action={adminLogoutAction}>
-              <button className="flex h-9 items-center gap-1.5 rounded-lg px-2.5 text-muted hover:bg-surface-2 hover:text-text">
-                <LogOut size={16} /> 登出
+              <button className="flex h-9 items-center gap-1.5 rounded-lg px-2.5 text-muted hover:bg-surface-2 hover:text-text" aria-label="登出">
+                <LogOut size={16} /> <span className="hidden sm:inline">登出</span>
               </button>
             </form>
           </div>

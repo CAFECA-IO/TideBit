@@ -148,15 +148,15 @@ export default async function MemberDetail({ params }: PageProps<"/admin/members
                 <tbody>
                   {holdings.map((h) => (
                     <tr key={h.code}>
-                      <td>
+                      <td data-label="幣種">
                         <span className="flex items-center gap-2 font-medium">
                           <CoinIcon code={h.code} size={20} />
                           {h.code.toUpperCase()}
                         </span>
                       </td>
-                      <td className="r num">{fmtAmount(h.balance, 8)}</td>
-                      <td className="r num text-muted">{fmtAmount(h.locked, 8)}</td>
-                      <td className="r num font-medium">{fmtAmount(h.total, 8)}</td>
+                      <td data-label="可用" className="r num">{fmtAmount(h.balance, 8)}</td>
+                      <td data-label="凍結" className="r num text-muted">{fmtAmount(h.locked, 8)}</td>
+                      <td data-label="總額" className="r num font-medium">{fmtAmount(h.total, 8)}</td>
                     </tr>
                   ))}
                   {holdings.length === 0 && (
