@@ -1,13 +1,23 @@
 import Link from "next/link";
 import clsx from "clsx";
 
-/** 舊站 Logo：深色底用白字版、淺色底用深藍字版 */
-export function Logo({ tone = "dark", height = 28, href = "/", className }: { tone?: "dark" | "light"; height?: number; href?: string; className?: string }) {
-  const src = tone === "light" ? "/brand/wordmark-white.png" : "/brand/wordmark-dark.png";
+/**
+ * 舊站 Logo：深色底用白字版、淺色底用深藍字版。
+ * 預設 auto：依系統深淺色模式切換（深色模式時頁首背景為深色）。
+ */
+export function Logo({ tone = "auto", height = 28, href = "/", className }: { tone?: "auto" | "dark" | "light"; height?: number; href?: string; className?: string }) {
+  const style = { height, width: "auto" } as const;
   return (
     <Link href={href} className={clsx("inline-flex items-center", className)} aria-label="TideBit">
-      {/* eslint-disable-next-line @next/next/no-img-element */}
-      <img src={src} alt="TideBit" style={{ height, width: "auto" }} />
+      {tone === "auto" ? (
+        <picture>
+          <source srcSet="/brand/wordmark-white.png" media="(prefers-color-scheme: dark)" />
+          <img src="/brand/wordmark-dark.png" alt="TideBit" style={style} />
+        </picture>
+      ) : (
+        // eslint-disable-next-line @next/next/no-img-element
+        <img src={tone === "light" ? "/brand/wordmark-white.png" : "/brand/wordmark-dark.png"} alt="TideBit" style={style} />
+      )}
     </Link>
   );
 }
